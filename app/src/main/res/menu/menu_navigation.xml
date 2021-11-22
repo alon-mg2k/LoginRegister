@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="@string/inicio" />
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/enviar"
+        android:title="@string/chat" />
+    <item
+        android:id="@+id/videocall"
+        android:icon="@drawable/videochat"
+        android:title="@string/videollamada" />
+    <item
+        android:id="@+id/ajustes"
+        android:icon="@drawable/settings"
+        android:title="@string/ajustes" />
+
+</menu>

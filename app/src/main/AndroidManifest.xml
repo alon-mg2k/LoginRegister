@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.loginregister"
+    android:versionCode="1">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <application
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LoginRegister"
+        android:versionCode="1">
+        <activity
+            android:name=".data.RSUActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.RDUActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.RQActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.RSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.RDActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.CO2StatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.CalibrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PairingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalidadActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AjustesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VideoCallActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserHome"
+            android:exported="true" />
+        <activity
+            android:name=".AdminHome"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UAjustesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginRegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

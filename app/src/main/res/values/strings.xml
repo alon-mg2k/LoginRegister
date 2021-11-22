@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">DINA App</string>
+
+    //labeles titulos
+    <string name="lbl_AdminHome">Administrador</string>
+    <string name="lbl_UserHome">Espectador</string>
+
+    <string name="btn_iniciar">Iniciar Sesión</string>
+    <string name="btn_cerrar">Cerrar Sesión</string>
+    <string name="btn_registrar">Registrarte</string>
+
+
+    <string name="btn_iniciarsesion">Iniciar Sesión</string>
+    <string name="btn_registro">Registrarse</string>
+    <string name="lbl_idioma">Idioma</string>
+    <string name="lbl_Admin">Usuario con Dispositivo</string>
+    <string name="lbl_Viewer">Usuario como Espectador</string>
+
+    //Campos de Registro Admin
+    <string name="text_hint_nombre">Nombre Completo</string>
+    <string name="text_hint_numerodisp">Numero de Dispositivo</string>
+    <string name="text_hint_email">Correo Electronico</string>
+    <string name="text_hint_contraseña">Contraseña</string>
+    <string name="text_hint_confir_contraseña">Confirmar Contraseña</string>
+
+
+    <string name="btn_useradmin">Usuario con Dispositivo</string>
+    <string name="btn_userviewer">Usuario como Espectador</string>
+    <string name="msj_espera2">Por favor espere mientras validamos sus credenciales</string>
+    <string name="create_Account">Creando cuenta</string>
+    <string name="pass_no_match">Contraseña no coinciden</string>
+    <string name="msj_password">Contraseña no cumple con los requisitos</string>
+    <string name="campos_complete">Información Correcta</string>
+    <string name="user_Registro">Registro con exito</string>
+    <string name="datos_incorrectos">Datos incorrectos</string>
+    <string name="campo_email">Complete dato "Correo electronico"</string>
+    <string name="campo_contrasena">Complete dato "Contraseña"</string>
+    <string name="cargar">Cargando...</string>
+    <string name="msj_verificar">Verificando información</string>
+    <string name="no_registro_user">Error al registrar usuario</string>
+
+    //Pantalla de chat
+    <string name="msj_foto">Ha cambiado foto de perfil</string>
+    <string name="msj_foto2">Envio una foto</string>
+
+
+    //Menu
+    <string name="inicio">Inicio</string>
+    <string name="chat">Mensajes</string>
+    <string name="videollamada">Videollamada</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="cerrar">Cerrar Sesion</string>
+
+    //Dashboard
+    <string name="btn_join">Unirte</string>
+    <string name="btn_share">Compartir</string>
+    <string name="hint_text_code">Codigo de Acceso</string>
+    <string name="text_info">Porfavor comparte este codigo con tus amigos para iniciar la videoconferencia</string>
+
+
+    //Admin Home
+    <string name="conectar_btn">Conectar</string>
+    <string name="admin_home">Menú Principal</string>
+
+
+    //Ajustes perfil
+    <string name="perfil_id">ID</string>
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_correo">Correo Electronico</string>
+    <string name="perfil_dispositivo">Dispositivo</string>
+    <string name="btn_record">Recibir</string>
+    <string name="txt_CO2">Calidad de CO2:</string>
+    <string name="txt_dist">Dist. Recorrida:</string>
+    <string name="txt_stepcounter">Contador de Pasos:</string>
+    <string name="txt_console">Consola Lista... Esperando Conexión</string>
+    <string name="txt_pairingdevice">Seleccione Modulo Bluetooth</string>
+    <string name="txt_connectionsuccess">Conexión realizada con éxito .. Esperando datos</string>
+    <string name="txt_connectionfailed">Conexión fallida</string>
+    <string name="txt_connectionstopped">Conexión detenida</string>
+    <string name="str_steps">pasos.</string>
+    <string name="str_airstatusexcellent">BUENA</string>
+    <string name="str_airstatusgood">NORMAL</string>
+    <string name="str_airstatushalf">REGULAR</string>
+    <string name="str_airstatusbad">MALA</string>
+    <string name="str_dist">Distancia:</string>
+    <string name="str_co2">Emision de CO2:</string>
+    <string name="str_estado">Status CA:</string>
+    <string name="str_stepcounter">Pasos Contados:</string>
+    <string name="str_accx">Acelerómetro X:</string>
+    <string name="str_accy">Acelerómetro Y:</string>
+    <string name="str_accz">Acelerómetro Z:</string>
+    <string name="btn_calibrate">Calibrar</string>
+    <string name="btn_recordmain">Registrar (Modo Estático)</string>
+    <string name="btn_recordmain2">Registrar (Modo Dinámico)</string>
+    <string name="btn_reportview">Reportes</string>
+    <string name="btn_stop">Detener</string>
+    <string name="btn_back">Atrás</string>
+    <string name="str_datetime">Fecha y Hora:</string>
+    <string name="btn_query">Consultar Estado</string>
+    <string name="btn_reportuser">Reportes de Usuario (Estático)</string>
+    <string name="btn_reportquery">Reportes de Usuario (Dinámico)</string>
+    <string name="header_co2status">Condición de calidad de aire</string>
+    <string name="sw_report_name">Filtrar Usuario</string>
+    <string name="sw_report_device">Filtrar Disp.</string>
+    <string name="sw_report_date">Filtrar Fecha</string>
+    <string name="str_device">Dispositivo:</string>
+    <string name="str_username">Usuario:</string>
+    <string name="sw_report_mode">Filtrar Modo</string>
+    <string name="str_profile">Perfil</string>
+    <string name="str_qualitydefault">No Disponible</string>
+</resources>

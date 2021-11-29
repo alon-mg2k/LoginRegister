@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DataReadingLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow android:id="@+id/DataReadingRow">
+
+        <TextView
+            android:id="@+id/table_co2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/stylo_bordertv"
+
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="@string/str_co2"
+            android:textColor="@color/lightgreen"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/table_dist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/stylo_bordertv"
+
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="@string/str_dist"
+            android:textColor="@color/lightgreen"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/table_stepcounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/stylo_bordertv"
+
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="@string/str_stepcounter"
+            android:textColor="@color/lightgreen"
+            android:textSize="12sp" />
+    </TableRow>
+</TableLayout>

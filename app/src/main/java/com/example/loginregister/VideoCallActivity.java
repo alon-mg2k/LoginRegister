@@ -62,11 +62,11 @@ public class VideoCallActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
-                        if (tipoUs == "Admin") {
+                        if (tipoUs.equals("Admin")) {
                             startActivity(new Intent(getApplicationContext(), AdminHome.class));
                             overridePendingTransition(0, 0);
                         }
-                        if (tipoUs == "Users") {
+                        if (tipoUs.equals("Users")) {
                             startActivity(new Intent(getApplicationContext(), UserHome.class));
                             overridePendingTransition(0, 0);
                         }
@@ -75,11 +75,11 @@ public class VideoCallActivity extends AppCompatActivity {
 
                         return true;
                     case R.id.ajustes:
-                        if (tipoUs == "Admin") {
+                        if (tipoUs.equals("Admin")) {
                             startActivity(new Intent(getApplicationContext(),AjustesActivity.class));
                             overridePendingTransition(0, 0);
                         }
-                        if (tipoUs == "Users") {
+                        if (tipoUs.equals("Users")) {
                             startActivity(new Intent(getApplicationContext(), UAjustesActivity.class));
                             overridePendingTransition(0, 0);
                         }

@@ -108,4 +108,17 @@
     <string name="sw_report_mode">Filtrar Modo</string>
     <string name="str_profile">Perfil</string>
     <string name="str_qualitydefault">No Disponible</string>
+    <string name="str_personcounter">Personas Detectadas:</string>
+    <string name="str_people">personas.</string>
+    <string name="str_dist2">Distancia Medida:</string>
+    <string name="str_mode">Modo:</string>
+    <string name="str_devicemode_static">Estático</string>
+    <string name="str_devicemode_dynamic">Dinámico</string>
+    <string name="str_spinner_selectuser">Seleccione Usuario</string>
+    <string name="str_spinner_selectmode">Seleccione Modo</string>
+    <string name="str_spinner_selectdevice">Seleccionar Dispositivo</string>
+    <string name="str_warning_good">La calidad de aire esta en muy buenas condiciones.</string>
+    <string name="str_warning_normal">La calidad de aire es normal.</string>
+    <string name="str_warning_regular">La calidad de aire es regular, se recomienda moverse de la zona actual.</string>
+    <string name="str_warning_bad">La calidad de aire es mala, por favor muévase de lugar a una zona mas estable.</string>
 </resources>

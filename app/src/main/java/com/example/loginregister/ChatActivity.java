@@ -22,6 +22,8 @@ import com.bumptech.glide.Glide;
 import com.example.loginregister.Adaptadores.AdapterMensajes;
 import com.example.loginregister.Firebase_.MensajeEnviar;
 import com.example.loginregister.Firebase_.MensajeRecibir;
+import com.example.loginregister.Model.Users;
+import com.example.loginregister.Model.Users2;
 import com.example.loginregister.Prevalent.Prevalent;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,6 +54,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+    private DatabaseReference userReference;
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
@@ -69,6 +72,7 @@ public class ChatActivity extends AppCompatActivity {
     private String msj_foto;
     private String msj_foto2;
     private String tipoUs;
+    private String id;
 
     SharedPreferences preferences;
 
@@ -98,6 +102,8 @@ public class ChatActivity extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         preferences = getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
         tipoUs = preferences.getString("tipoUs", "");
+        id = preferences.getString("id","");
+
 
         //inicializamos variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -115,11 +121,11 @@ public class ChatActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.home:
-                        if (tipoUs == "Admin") {
+                        if (tipoUs.equals("Admin")) {
                             startActivity(new Intent(getApplicationContext(), AdminHome.class));
                             overridePendingTransition(0, 0);
                         }
-                        if (tipoUs == "Users") {
+                        if (tipoUs.equals("Users")) {
                             startActivity(new Intent(getApplicationContext(), UserHome.class));
                             overridePendingTransition(0, 0);
                         }
@@ -131,11 +137,11 @@ public class ChatActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.ajustes:
-                        if (tipoUs == "Admin") {
+                        if (tipoUs.equals("Admin")) {
                             startActivity(new Intent(getApplicationContext(),AjustesActivity.class));
                             overridePendingTransition(0, 0);
                         }
-                        if (tipoUs == "Users") {
+                        if (tipoUs.equals("Users")) {
                             startActivity(new Intent(getApplicationContext(), UAjustesActivity.class));
                             overridePendingTransition(0, 0);
                         }
@@ -153,8 +159,8 @@ public class ChatActivity extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               databaseReference.push().setValue( new MensajeEnviar(txtMensaje.getText().toString(),nombre.getText().toString(),"","1", ServerValue.TIMESTAMP));
-               txtMensaje.setText("");
+                databaseReference.push().setValue( new MensajeEnviar(txtMensaje.getText().toString(),nombre.getText().toString(),"","1", ServerValue.TIMESTAMP));
+                txtMensaje.setText("");
 
             }
 
@@ -187,33 +193,35 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-       databaseReference.addChildEventListener(new ChildEventListener() {
-           @Override
-           public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
-               MensajeRecibir m = dataSnapshot.getValue(MensajeRecibir.class);
-               adapter.addMensaje(m);
-           }
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
+                MensajeRecibir m = dataSnapshot.getValue(MensajeRecibir.class);
+                adapter.addMensaje(m);
+            }
 
-           @Override
-           public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-           }
+            }
 
-           @Override
-           public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-           }
+            }
 
-           @Override
-           public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-           }
+            }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-           }
-       });
+            }
+        });
+
+        getUserNameChat(currentUser,tipoUs,id);
     }
     private void setScrollbar(){
         rvMensajes.scrollToPosition(adapter.getItemCount()-1);
@@ -227,26 +235,26 @@ public class ChatActivity extends AppCompatActivity {
             storageReference = storage.getReference("imagenes_chat");
             final StorageReference fotoReferencia = storageReference.child(u.getLastPathSegment());
 
-           fotoReferencia.putFile(u).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-               @Override
-               public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+            fotoReferencia.putFile(u).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
 
-                   if(!task.isSuccessful()){
-                       throw task.getException();
-                   }
+                    if(!task.isSuccessful()){
+                        throw task.getException();
+                    }
 
                     return fotoReferencia.getDownloadUrl();
-               }
-           }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-               @Override
-               public void onComplete(@NonNull Task<Uri> task) {
-                   if (!task.isSuccessful()){
-                       Uri uri = task.getResult();
-                       MensajeEnviar m= new MensajeEnviar(NOMBRE_USUARIO + R.id.msj_foto2,uri.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
-                       databaseReference.push().setValue(m);
-                   }
-               }
-           });
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (!task.isSuccessful()){
+                        Uri uri = task.getResult();
+                        MensajeEnviar m= new MensajeEnviar(NOMBRE_USUARIO + R.id.msj_foto2,uri.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
+                        databaseReference.push().setValue(m);
+                    }
+                }
+            });
 
 
 
@@ -285,23 +293,16 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        preferences = getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
-        tipoUs = preferences.getString("tipoUs", "");
+    private void getUserNameChat(FirebaseUser currentUser, String tipoUs, String id) {
         if(currentUser!= null){
-            DatabaseReference UsersRef;
-            if (tipoUs == "Admin"){
-               UsersRef = FirebaseDatabase.getInstance().getReference().child(tipoUs).child(Prevalent.currentOnlineUser.getId());
-                UsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            if (tipoUs.equals("Admin")){
+                userReference = database.getReference().child(tipoUs).child(Prevalent.currentOnlineUser.getId());
+                userReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            NOMBRE_USUARIO = dataSnapshot.child("name").getValue().toString();
+                            Users user = dataSnapshot.getValue(Users.class);
+                            NOMBRE_USUARIO = user.getName();
                             nombre.setText(NOMBRE_USUARIO);
                         }
                     }
@@ -309,13 +310,14 @@ public class ChatActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
-            } else if (tipoUs == "Users"){
-                UsersRef = FirebaseDatabase.getInstance().getReference().child(tipoUs).child(Prevalent.currentOnlineUser2.getId());
-                UsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            } else if (tipoUs.equals("Users")){
+                userReference = database.getReference().child(tipoUs).child(Prevalent.currentOnlineUser2.getId());
+                userReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            NOMBRE_USUARIO = dataSnapshot.child("name").getValue().toString();
+                            Users2 user2 = dataSnapshot.getValue(Users2.class);
+                            NOMBRE_USUARIO = user2.getName();
                             nombre.setText(NOMBRE_USUARIO);
                         }
                     }
@@ -324,9 +326,16 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
             }
-
-
         }
-
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        preferences = getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
+        tipoUs = preferences.getString("tipoUs", "");
+        id = preferences.getString("id","");
+        getUserNameChat(currentUser,tipoUs,id);
     }
 }

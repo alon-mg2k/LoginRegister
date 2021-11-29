@@ -36,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText InputEmail, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
-
+    private Users usuario;
+    private Users2 usuario2;
     private static FirebaseAuth mAuth;
     private FirebaseAuth mUser;
     private DatabaseReference mDatabase;
@@ -186,12 +187,12 @@ public class LoginActivity extends AppCompatActivity {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot)
                                         {
-                                            Users usuario = snapshot1.getValue(Users.class);
+                                            usuario = snapshot1.getValue(Users.class);
                                             String correo = usuario.getEmail();
-                                            String password1=usuario.getPassword();
+                                            String password1 = usuario.getPassword();
                                             //String tipousuario = usuario.getTipoUs();
 
-                                            Users2 usuario2 = snapshot1.getValue(Users2.class);
+                                            usuario2 = snapshot1.getValue(Users2.class);
 
                                             sharedPreferences = getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
 
@@ -203,14 +204,23 @@ public class LoginActivity extends AppCompatActivity {
 
                                                 if(email.equals(correo) && password.equals(password1))
                                                 {
-
                                                     if(parentDbName.equals("Admin")){
                                                         loadingBar.dismiss();
+
+                                                        editor = sharedPreferences.edit();
+                                                        editor.putString("id", usuario.getId());
+                                                        editor.apply();
+
                                                         Prevalent.currentOnlineUser = usuario;
                                                         Intent intent = new Intent(LoginActivity.this, AdminHome.class);
                                                         startActivity(intent);
                                                         finish();
                                                     } else if(parentDbName.equals("Users")){
+
+                                                        editor = sharedPreferences.edit();
+                                                        editor.putString("id", usuario2.getId());
+                                                        editor.apply();
+
                                                         loadingBar.dismiss();
                                                         Intent intent = new Intent(LoginActivity.this, UserHome.class);
                                                         Prevalent.currentOnlineUser2 = usuario2;
@@ -246,6 +256,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else{
                         // If sign in fails, display a message to the user.
+                        loadingBar.dismiss();
                         Log.w("msj", "signInWithEmail:failure", task.getException());
                         Toast.makeText(LoginActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();

@@ -22,11 +22,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/verifyButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="@string/conectar_btn"
+            app:layout_constraintBottom_toTopOf="@+id/BackButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_messagewarning"
+            app:layout_constraintVertical_bias="1.0" />
+
         <TextView
             android:id="@+id/header_airquality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/header_co2status"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/BackButton"
@@ -37,8 +50,10 @@
 
         <TextView
             android:id="@+id/tv_messagewarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="@string/str_co2"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -50,8 +65,10 @@
 
         <TextView
             android:id="@+id/tv_ppmdata"
-            android:layout_width="198dp"
-            android:layout_height="56dp"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="@string/header_co2status"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -67,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_qualitydefault"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="@+id/BackButton"
@@ -78,7 +96,7 @@
 
         <Button
             android:id="@+id/BackButton"
-            android:layout_width="362dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="@string/btn_back"
             app:layout_constraintBottom_toBottomOf="parent"

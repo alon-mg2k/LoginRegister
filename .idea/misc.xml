@@ -43,6 +43,27 @@
         <entry key="..\:/Users/memoa/Desktop/LoginRegister/app/src/main/res/layout/activity_user_home.xml" value="0.25" />
         <entry key="..\:/Users/memoa/Desktop/LoginRegister/app/src/main/res/layout/activity_video_call.xml" value="0.1875" />
         <entry key="..\:/Users/memoa/Desktop/LoginRegister/app/src/main/res/layout/device_name.xml" value="0.22" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/drawable/stylo_bordertv.xml" value="0.20462962962962963" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/drawable/stylo_reportview.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_admin_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_ajustes.xml" value="0.2694746376811594" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_calibration.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_chat.xml" value="0.225" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_co2_status.xml" value="0.234375" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_rdactivity.xml" value="0.33" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_rduactivity.xml" value="0.234375" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_rqactivity.xml" value="0.25" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_rsactivity.xml" value="0.25" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_rsuactivity.xml" value="0.33" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/activity_user_home.xml" value="0.221875" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/card_view_mensajes.xml" value="0.24139492753623187" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/device_name.xml" value="0.2078804347826087" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rqactivity_dataview.xml" value="0.33" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rquactivity_dataview.xml" value="0.18" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rquactivity_table.xml" value="0.234375" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rsactivity_dataview.xml" value="0.24139492753623187" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rsactivity_table_layout.xml" value="0.25" />
+        <entry key="..\:/Users/memoa/StudioProjects/LoginRegister/app/src/main/res/layout/rsutable_static.xml" value="0.2078804347826087" />
       </map>
     </option>
   </component>

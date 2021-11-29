@@ -1,20 +1,18 @@
 package com.example.loginregister.Model;
 
 public class Users {
-    private String id, email, name, password, tipous, dispositivo;
+    private String id, email, name, password, dispositivo;
 
     public Users() {
 
     }
 
-    public Users(String id, String email, String name, String password, String tipous, String dispositivo) {
+    public Users(String id, String email, String name, String password, String dispositivo) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
-        this.tipous = tipous;
         this.dispositivo = dispositivo;
-
     }
 
     public String getId() {
@@ -47,14 +45,6 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getTipous() {
-        return tipous;
-    }
-
-    public void setTipous(String tipous) {
-        this.tipous = tipous;
     }
 
     public String getDispositivo() {

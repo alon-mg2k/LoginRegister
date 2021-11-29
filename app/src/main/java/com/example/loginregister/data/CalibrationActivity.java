@@ -32,6 +32,7 @@ public class CalibrationActivity extends AppCompatActivity {
     Boolean hilo = true;
     String[] dataRecording;
     int stepCounter;
+    static BluetoothClass btClass = AdminHome.btClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +51,13 @@ public class CalibrationActivity extends AppCompatActivity {
 
         stopButton.setEnabled(false);
 
-        if (AdminHome.btClass == null) {
-            this.onPause();
-            startActivity(new Intent(getApplicationContext(),PairingActivity.class));
-        }
-        else {
-            AdminHome.btClass = new BluetoothClass(this, PairingActivity.class);
-            pairButton.setEnabled(false);
-        }
-
         pairButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdminHome.btClass.exitErrorOk(true);
-                AdminHome.btClass.mensajeConexion(getResources().getString(R.string.txt_connectionsuccess));
-                AdminHome.btClass.mensajeConexion(getResources().getString(R.string.txt_connectionfailed));
-                initHilo = AdminHome.btClass.conectaBluetooth();
+                btClass.exitErrorOk(true);
+                btClass.mensajeConexion(getResources().getString(R.string.txt_connectionsuccess));
+                btClass.mensajeConexion(getResources().getString(R.string.txt_connectionfailed));
+                initHilo = btClass.conectaBluetooth();
                 pairButton.setEnabled(false);
             }
         });
@@ -73,8 +65,12 @@ public class CalibrationActivity extends AppCompatActivity {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdminHome.btClass.exitConexion();
+                hilo = false;
                 initHilo = false;
+                delay(500L);
+                btClass.mTx(";");
+                delay(500L);
+                btClass.exitConexion();
             }
         });
 
@@ -95,16 +91,18 @@ public class CalibrationActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         while (hilo) {
-                            dataRecording = new String[8];
-                            for (int i = 0; i < 8; i++) {
-                                if (i == 0) { structureData(0,"f");}
-                                if (i == 1) { structureData(1,"g");}
-                                if (i == 2) { structureData(2,"e");}
-                                if (i == 3) { structureData(3,"d");}
-                                if (i == 4) { structureData(4,"s");}
-                                if (i == 5) { structureData(5,"x");}
-                                if (i == 6) { structureData(6,"y");}
-                                if (i == 7) { structureData(7,"z");}
+                            dataRecording = new String[10];
+                            for (int i = 0; i < 10; i++) {
+                                if (i == 0) { structureData(0,dataRecording[0],"1");}
+                                if (i == 1) { structureData(1,dataRecording[1],"2");}
+                                if (i == 2) { structureData(2,dataRecording[2],"3");}
+                                if (i == 3) { structureData(3,dataRecording[3],"4");}
+                                if (i == 4) { structureData(4,dataRecording[4],"5");}
+                                if (i == 5) { structureData(5,dataRecording[5],"6");}
+                                if (i == 6) { structureData(6,dataRecording[6],"7");}
+                                if (i == 7) { structureData(7,dataRecording[7],"8");}
+                                if (i == 8) { structureData(8,dataRecording[8],"9");}
+                                if (i == 9) { structureData(9,dataRecording[9],":");}
                             }
                         }
                     }
@@ -121,18 +119,14 @@ public class CalibrationActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        if (AdminHome.btClass != null) {
-            initHilo = AdminHome.btClass.conectaBluetooth();
-        }
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        if (AdminHome.btClass != null) {
+        if (btClass != null) {
             hilo = false;
             initHilo = true;
-            AdminHome.btClass.exitConexion();
         }
         super.onPause();
     }
@@ -142,23 +136,23 @@ public class CalibrationActivity extends AppCompatActivity {
         initHilo = false;
         hilo = false;
         super.onDestroy();
+        btClass.exitConexion();
     }
 
 
-    protected void structureData(int i, String c) {
+    protected void structureData(int i, String dataRecording, String c) {
         try {
-            delay(200L);
-            AdminHome.btClass.mTx(c);
-            delay(200L);
-            String dataRecording = AdminHome.btClass.mRx();
-            if (dataRecording != "") {
-                if (hilo) {
-                    showConsoleViewData(i, dataRecording);
-                    showTextViewData(i, dataRecording);
-                }
-                AdminHome.btClass.mensajeReset();
+                delay(10L);
+                btClass.mTx(c);
+                delay(10L);
+                dataRecording = btClass.mRx();
+                if (dataRecording != "") {
+                    if (hilo) {
+                        showConsoleViewData(i, dataRecording);
+                        showTextViewData(i, dataRecording);
+                    }
+                    btClass.mensajeReset();
             }
-            delay(200L);
         } catch (NullPointerException ex) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -171,29 +165,51 @@ public class CalibrationActivity extends AppCompatActivity {
         }
     }
 
-
     protected void showConsoleViewData(int i ,String stringView) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (i==0) { console.append("\n" + getResources().getString(R.string.str_datetime) + stringView + "\n"); }
-                if (i==1) { console.append(getResources().getString(R.string.str_co2) + " " + stringView + " ppm.\n"); }
-                if (i==2) { console.append(getResources().getString(R.string.str_estado) + " " + stringView + "\n"); }
-                if (i==3) { console.append(getResources().getString(R.string.str_dist) + " " + stringView + "cm.\n"); }
-                if (i==4) { console.append(getResources().getString(R.string.str_stepcounter) + " " + stringView + " " + getResources().getString(R.string.str_steps) + "\n"); }
-                if (i==5) { console.append(getResources().getString(R.string.str_accx) + " " + stringView + "°\n"); }
-                if (i==6) { console.append(getResources().getString(R.string.str_accy) + " " + stringView + "°\n"); }
-                if (i==7) { console.append(getResources().getString(R.string.str_accz) + " " + stringView + "°\n"); }
+                if (i == 0) {
+                    console.append("\n" + getResources().getString(R.string.str_device) + stringView + "\n");
+                }
+                if (i == 1) {
+                    console.append(getResources().getString(R.string.str_datetime) + stringView + "\n");
+                }
+                if (i == 2) {
+                    console.append(getResources().getString(R.string.str_co2) + " " + stringView + " ppm.\n");
+                }
+                if (i == 3) {
+                    console.append(getResources().getString(R.string.str_estado) + " " + stringView + "\n");
+                }
+                if (i == 4) {
+                    console.append(getResources().getString(R.string.str_dist) + " " + stringView + "cm.\n");
+                }
+                if (i == 5) {
+                    console.append(getResources().getString(R.string.str_personcounter) + " " + stringView + " " + getResources().getString(R.string.str_people) + "\n");
+                }
+                if (i == 6) {
+                    console.append(getResources().getString(R.string.str_accx) + " " + stringView + "°\n");
+                }
+                if (i == 7) {
+                    console.append(getResources().getString(R.string.str_accy) + " " + stringView + "°\n");
+                }
+                if (i == 8) {
+                    console.append(getResources().getString(R.string.str_accz) + " " + stringView + "°\n");
+                }
+                if (i == 9) {
+                    console.append(getResources().getString(R.string.str_stepcounter) + " " + stringView + "." + "\n");
+                }
                 scrollView.fullScroll(View.FOCUS_DOWN);
             }
         });
     }
 
+
     protected void showTextViewData(int i, String dataString) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (i == 2) {
+                if (i == 3) {
                     if (dataString.equals("GOOD")){
                         CO2status.setText(getResources().getString(R.string.str_airstatusexcellent));
                         CO2status.setTextColor(Color.BLUE);}
@@ -207,8 +223,8 @@ public class CalibrationActivity extends AppCompatActivity {
                         CO2status.setText(dataString + " " + getResources().getString(R.string.str_airstatusbad));
                         CO2status.setTextColor(Color.RED);}
                 }
-                if (i == 3){ DistanceRun.setText(dataString + " cm. ");}
-                if (i == 4){ RecordedSteps.setText(dataString + " " + getResources().getString(R.string.str_steps));}
+                if (i == 4){ DistanceRun.setText(dataString + " cm. ");}
+                if (i == 5){ RecordedSteps.setText(dataString + " " + getResources().getString(R.string.str_people));}
             }
         });
 

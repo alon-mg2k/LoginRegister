@@ -69,15 +69,15 @@
     <string name="str_accy">Accelerometer Y Axis:</string>
     <string name="str_accz">Accelerometer Z Axis:</string>
     <string name="btn_calibrate">Calibrate</string>
-    <string name="btn_recordmain">Register (Dynamic Mode)</string>
-    <string name="btn_recordmain2">Register (Static Mode)</string>
+    <string name="btn_recordmain">Register (Static Mode)</string>
+    <string name="btn_recordmain2">Register (Dynamic Mode)</string>
     <string name="btn_reportview">Report Views</string>
     <string name="btn_stop">Stop</string>
     <string name="btn_back">Back</string>
     <string name="str_datetime">Date Time:</string>
     <string name="btn_query">Check Status</string>
     <string name="btn_reportuser">User Reports (Static)</string>
-    <string name="btn_reportquery">CO2 Reports (Dynamic)</string>
+    <string name="btn_reportquery">User Reports (Dynamic)</string>
     <string name="header_co2status">Air Quality Condition</string>
     <string name="sw_report_name">Filter User</string>
     <string name="title_activity_rcactivity">RCActivity</string>
@@ -94,4 +94,17 @@
     <string name="sw_report_mode">Filter Mode</string>
     <string name="str_profile">Profile</string>
     <string name="str_qualitydefault">Not Available</string>
+    <string name="str_personcounter">People Detected:</string>
+    <string name="str_people">people.</string>
+    <string name="str_dist2">Distance Measured:</string>
+    <string name="str_mode">Mode:</string>
+    <string name="str_devicemode_static">Static</string>
+    <string name="str_devicemode_dynamic">Dynamic</string>
+    <string name="str_spinner_selectuser">Select User</string>
+    <string name="str_spinner_selectmode">Select Mode</string>
+    <string name="str_spinner_selectdevice">Select Device</string>
+    <string name="str_warning_good">Air quality is in very good conditions.</string>
+    <string name="str_warning_normal">Air quality is normal.</string>
+    <string name="str_warning_regular">Air quality is regular, it is recommended to leave the actual zone.</string>
+    <string name="str_warning_bad">Air quality is bad, please move out of actual zone and find a more stable zone.</string>
 </resources>

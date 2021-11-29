@@ -22,8 +22,9 @@ public class AjustesActivity extends AppCompatActivity {
 
     //Declaración de variables
     String name, email, id, dispositivo;
-    TextView nombre, correo, id_admin, dispo;
-    private FirebaseAuth mAuth;
+    TextView nombre, correo, dispo;
+    TextView id_admin;
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Object view;
     DatabaseReference UsersRef;
 
@@ -72,7 +73,7 @@ public class AjustesActivity extends AppCompatActivity {
         });
 
     //Asignamos variables para TextView
-        mAuth = FirebaseAuth.getInstance();
+
         nombre = findViewById(R.id.nom_info);
         id_admin = findViewById(R.id.id_info);
         correo = findViewById(R.id.email_info);

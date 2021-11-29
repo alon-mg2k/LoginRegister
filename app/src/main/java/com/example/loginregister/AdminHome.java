@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.loginregister.data.*;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,14 +21,22 @@ public class AdminHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_admin_home);
 
-            //inicializamos variables
+        //inicializamos variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-        //Perform ItemSelectedListener
+        if (btClass == null) {
+            this.onResume();
+            startActivity(new Intent(getApplicationContext(),PairingActivity.class));
+            overridePendingTransition(0,0);
+        }
+        else {
+            btClass = new BluetoothClass(this, PairingActivity.class);
+        }
 
+        //Perform ItemSelectedListener
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -57,10 +66,12 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
+
+
         Button calButton = findViewById(R.id.QueryButton);
-        Button recordButton = findViewById(R.id.RSButton);
-        Button recordButton2 = findViewById(R.id.RCButton);
-        Button reportButton = findViewById(R.id.RPButton);
+        Button RecordDynamicButton = findViewById(R.id.RdButton);
+        Button RecordStaticButton = findViewById(R.id.RsButton);
+        Button ReportGeneralButton = findViewById(R.id.RPButton);
 
         calButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +81,7 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
-        recordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RSActivity.class));
-                overridePendingTransition(0,0);
-            }
-        });
-
-        recordButton2.setOnClickListener(new View.OnClickListener() {
+        RecordDynamicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),RDActivity.class));
@@ -86,7 +89,15 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
-        reportButton.setOnClickListener(new View.OnClickListener() {
+        RecordStaticButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RSActivity.class));
+                overridePendingTransition(0,0);
+            }
+        });
+
+        ReportGeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),RQActivity.class));
@@ -102,10 +113,8 @@ public class AdminHome extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onPause() { super.onPause();
     }
-
     @Override
     protected void onDestroy(){
         super.onDestroy();

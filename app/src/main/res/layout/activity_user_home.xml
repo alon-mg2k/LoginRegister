@@ -35,35 +35,38 @@
         <Button
             android:id="@+id/QueryButton"
             android:layout_width="match_parent"
-            android:layout_height="116dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:background="@color/design_default_color_on_secondary"
             android:backgroundTint="@color/black"
             android:text="@string/btn_query" />
 
         <Button
-            android:id="@+id/RCButton"
+            android:id="@+id/RsButton"
             android:layout_width="match_parent"
-            android:layout_height="116dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:background="@color/design_default_color_on_secondary"
             android:backgroundTint="@color/black"
             android:text="@string/btn_reportuser" />
 
         <Button
-            android:id="@+id/RSButton"
+            android:id="@+id/RdButton"
             android:layout_width="match_parent"
-            android:layout_height="116dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:background="@color/design_default_color_on_secondary"
             android:backgroundTint="@color/black"
             android:text="@string/btn_reportquery" />

@@ -10,14 +10,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.loginregister.data.CO2StatusActivity;
-import com.example.loginregister.data.CalibrationActivity;
 import com.example.loginregister.data.RDUActivity;
 import com.example.loginregister.data.RSUActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserHome extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +57,8 @@ public class UserHome extends AppCompatActivity {
         });
 
         Button queryButton = findViewById(R.id.QueryButton);
-        Button RCbutton = findViewById(R.id.RCButton);
-        Button RSbutton = findViewById(R.id.RSButton);
+        Button RCbutton = findViewById(R.id.RsButton);
+        Button RSbutton = findViewById(R.id.RdButton);
 
         queryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +71,7 @@ public class UserHome extends AppCompatActivity {
         RCbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RDUActivity.class));
+                startActivity(new Intent(getApplicationContext(), RSUActivity.class));
                 overridePendingTransition(0,0);
             }
         });
@@ -81,7 +79,7 @@ public class UserHome extends AppCompatActivity {
         RSbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RSUActivity.class));
+                startActivity(new Intent(getApplicationContext(), RDUActivity.class));
                 overridePendingTransition(0,0);
             }
         });

@@ -15,28 +15,28 @@
         android:versionCode="1">
         <activity
             android:name=".data.RSUActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.RDUActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.RQActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.RSActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.RDActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.CO2StatusActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".data.CalibrationActivity"
             android:exported="true" />
         <activity
             android:name=".PairingActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CalidadActivity"
             android:exported="true" />
